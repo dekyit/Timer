@@ -1,12 +1,16 @@
-import React from "react";
-
+import React from 'react';
+import {useState} from "react";
 
 export default function Timer(){
-   const intervalID = React.useRef(null);
-   let counter = 0;
+   let intervalID = React.useRef(null);
+   const [counter, setCounter] = useState(0);
+
+   function incrementCount(prevCounter){
+      return prevCounter + 1
+   }
 
    function Count(){
-      counter++
+      setCounter(incrementCount)
       console.log(counter)
       return(counter)
    }
@@ -35,7 +39,7 @@ export default function Timer(){
    }
    return(
       <div>
-         <Count/>
+         <counter/>
          <Buttons/>
       </div>
    )
